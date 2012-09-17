@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+  		<%= csrf_meta_tags %>
+		<%= render 'layouts/stylesheets' %>
+  		<%= javascript_include_tag "application" %>
+	</head>
+		<% if signed_in? && admin? %>
+		<body class="admin">
+		<%else%>
+		<body>
+		<%end%>
+		<div class="container">
+      	<%= render 'layouts/header' %>
+			<div class="round">
+			<% flash.each do |key, value | %>
+				<div class ="flash <%= key %>" ><%= value %> </div> 
+			<% end %>
+			<%= yield %>
+			</div>
+
+		</div>
+		
+	</body>
+
+</html>

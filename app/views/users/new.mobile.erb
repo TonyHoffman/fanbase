@@ -1,0 +1,15 @@
+<div data-role="content" <%=data_theme%>>
+	
+<h1>Sign up Mobile</h1>
+
+<%= form_for(@user) do |f| %>
+<%= render 'shared/error_messages', :object => f.object%> 
+<%= render 'fields', :f => f %>
+<br />
+<div>
+<%= f.submit 'Sign up' %>
+</div>
+
+<%end%>
+
+</div>

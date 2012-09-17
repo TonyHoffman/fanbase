@@ -1,0 +1,33 @@
+<h1>Listing categories / </h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Level1</th>
+    <th>Level2</th>
+    <th>Level3</th>
+    <th>Level4</th>
+    <th>5</th>
+    <th>6</th>
+    <th>7</th>
+    <th>8</th>
+    <th>9</th>
+  </tr>
+<% @categories.each do |category| %>
+  <tr>
+ 	<td><%= category.id %></td>
+    <td><%= category.level1 %></td>
+    <td><%= category.level2 %></td>
+    <td><%= category.level3 %></td>
+    <td><%= category.level4 %></td>  
+    <td><%= form_for [category, @contest] do |f| %>
+		<% f.submit "Select" %>
+		<% end %>
+    <td><%= link_to 'Show', category %></td>
+    <td><%= link_to 'Edit', edit_category_path(category) %></td>
+    <td><%= link_to 'Destroy', category, confirm: 'Are you sure?', method: :delete %></td>
+	</tr>
+<%end%>
+</table>
+<br />
+<%= link_to 'New Category', new_category_path %>

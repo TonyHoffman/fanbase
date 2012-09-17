@@ -1,0 +1,19 @@
+<% if signed_in? %>
+<h1>Fanbase</h1>
+	<table class="front" summary="For signed-in users">
+		<tr>
+			<td class="main">
+
+			'This will contain the signed in user home page.'
+
+
+		</tr>
+	</table>
+
+<%else%>
+
+<%= render 'splash' %>
+
+<%= link_to "Sign up now!", signup_path, :class => "signup_button round"%>
+
+<%end%>

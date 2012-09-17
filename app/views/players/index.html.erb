@@ -1,0 +1,33 @@
+<h1>Listing players</h1>
+
+<table class="pretty">
+  <tr>
+    <th><%= sortable "last_name", "Last Name" %></th>
+    <th><%= sortable "first_name", "First Name" %></th>
+    <th><%= sortable "first_game", "First Game" %></th>
+    <th><%= sortable "last_game", "Last Game" %></th>
+    <th><%= sortable "position", "Position" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @players.each do |player| %>
+  <tr>
+    <td><%= player.last_name %></td>
+    <td><%= player.first_name %></td>
+    <td><%= player.first_game %></td>
+    <td><%= player.last_game %></td>
+    <td><%= player.position %></td>
+    <td><%= link_to 'Show', team_player_path(@team, player) %></td>
+    <td><%= link_to 'Edit', edit_team_player_path(@team, player) %></td>
+    <td><%= link_to 'Destroy', team_player_path(@team, player), confirm: 'Are you sure?', 
+																method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Back to All Teams ', sport_teams_path(@team.sport_id)%> |
+<%= link_to 'New Player', new_team_player_path %>

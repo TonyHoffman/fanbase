@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @contest.name %>
+</p>
+
+<p>
+  <b>First game:</b>
+  <%= @contest.first_game %>
+</p>
+
+<p>
+  <b>Last game:</b>
+  <%= @contest.last_game %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @contest.start.to_s(:custom_date_time) %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @contest.end.to_s(:custom_date_time) %>
+</p>
+
+<p>
+  <b>Team:</b>
+	<% if !@contest.team.nil?%>
+  	<%= @contest.team.city %>
+	<%end%>
+</p>
+<p>
+  <b>Category_id:</b>
+  	<% if !@contest.category.nil?%>
+		<%= @contest.category.level1 %> / <%= @contest.category.level2 %> 
+		/ <%= @contest.category.level3 %> / <%= @contest.category.level4 %>
+	<%end%>
+	</p>
+
+
+
+<%= link_to 'Edit', edit_team_contest_path(@team, @contest) %> |
+<%= link_to 'Back', team_contests_path %>
+
+<br />
+
+<%= render 'categories/index'%>

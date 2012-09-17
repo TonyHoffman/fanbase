@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>City</b> <br>
+  Team is: <%= @team.city %> in <%= @sport.description %>.
+</p>
+<%= link_to 'Edit', edit_sport_team_path(@sport, @team) %> |
+<%= link_to 'Back', sport_teams_path %>
+

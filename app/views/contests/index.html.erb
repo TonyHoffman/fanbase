@@ -1,0 +1,45 @@
+<h1>Listing contests</h1>
+
+<table class="pretty">
+  <tr>
+    <th>Name</th>
+    <th>First game</th>
+    <th>Last game</th>
+    <th>Start</th>
+    <th>End</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contests.each do |contest| %>
+  <tr>
+    <td><%= contest.name %></td>
+    <td><%= contest.first_game %></td>
+    <td><%= contest.last_game %></td>
+    <td><%= contest.start.to_s(:custom_date_time) %></td>
+    <td><%= contest.end.to_s(:custom_date_time) %></td>
+    <td><%= link_to 'Team', sport_team_path(contest.team.sport, contest.team) %></td>
+    <td><%= link_to 'Categories', categories_path %></td>
+    <td><% if !params[:team_id].nil? %>
+	<%= link_to 'Select Category', team_contest_path(@team, contest) %></td>
+
+    <td><%= link_to 'Edit', edit_team_contest_path(@team, contest) %></td>
+    <td><%= link_to 'Destroy', 	team_contest_path(@team, contest), 
+								confirm: 'Are you sure?', 
+								method: :delete %></td>
+	<%end%>
+  </tr>
+<% end %>
+</table>
+
+<% if !params[:team_id].nil? %>
+<%= link_to 'New Contest', new_team_contest_path %>
+<%end%>
+<% if !params[:category_id].nil? %>
+<%= link_to 'Categories', categories_path %>
+<%end%>
+
+
