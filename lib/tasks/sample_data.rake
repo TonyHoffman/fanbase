@@ -16,15 +16,7 @@ def make_users
                           :password => "passwo",
                           :password_confirmation => "passwo")
     admin.toggle!(:admin)              
-  #   99.times do |n|
-  #     name = Faker::Name.name
-  #     email = "example-#{n+1}@railstutorial.org"
-  #     password = "password"
-  #     User.create!(:name => name,
-  #                  :email => email,
-  #                  :password => password,
-  #                  :password_confirmation => password)
-  # end
+ 
 end
 
 def populate_2012_buffalo_football
