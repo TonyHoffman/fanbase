@@ -32,14 +32,23 @@ describe ContestsController do
    end 
   
   
-  it "should give a link to categories if no category has been selected yet" do
-    # get :index[@contest.team]
-    # response.should have_selector('a', :href => categories_path )
-  end
   
-  it "should show the cateogry levels if a category has been selected" do
+  it "should provide a filter to show only relevant contests to a signed in user" do
     
   end
+  
+  
+  
+  
+  
+  # it "should give a link to categories if no category has been selected yet" do
+  #   # get :index[@contest.team]
+  #   # response.should have_selector('a', :href => categories_path )
+  # end
+  
+  # it "should show the cateogry levels if a category has been selected" do
+  #   
+  # end
   
   
 

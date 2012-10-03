@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-]+\.[a-z]+\z/i
   
-  
+  has_many :branches, :dependent => :destroy
+    
   validates :name,  :presence => true,
                     :length => {:maximum => 50}
   

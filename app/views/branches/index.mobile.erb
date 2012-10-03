@@ -1,0 +1,26 @@
+<h3>My Picks for: <br/> 
+<%= @contest.team.city%> against <%= @contest.name%></h3>
+
+<ul data-role="listview" <%=data_theme%> >
+	<% @branches.each do |branch| %>
+	<li class="mypadding">
+	<% if branch.type_id? %>
+		<%= branch.type.event %> -
+	<%end%> 
+	<% if branch.player_id? %>
+		<%= branch.player.last_name %>
+	<%end%> 
+	<% if branch.event_id? %>
+		<%= branch.event.description %>
+	<%end%>	
+    <%= link_to '', edit_contest_branch_path(@contest, branch) %>
+	</li>
+	<% end %>
+<br />
+
+<div class="mypadding">
+<% if @branches.count < 4 then %>
+<%= link_to 'New Branch', new_contest_branch_path, :controller => 'branches',
+			:action => :new, "class" => "ui-btn-center", "data-mini" => "true"%>
+<%end%>
+</div>

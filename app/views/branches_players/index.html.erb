@@ -1,0 +1,29 @@
+<h1>Listing branches_players</h1>
+
+<table>
+  <tr>
+    <th>Branch</th>
+    <th>Player</th>
+    <th></th>
+    <th>=</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @branches_players.each do |branches_player| %>
+  <tr>
+    <td><%= branches_player.branch_id %></td>
+    <td><%= branches_player.player_id %></td>
+    <td><%= branches_player. %></td>
+    <td><%= branches_player.= %></td>
+    <td><%= link_to 'Show', branches_player %></td>
+    <td><%= link_to 'Edit', edit_branches_player_path(branches_player) %></td>
+    <td><%= link_to 'Destroy', branches_player, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Branches player', new_branches_player_path %>

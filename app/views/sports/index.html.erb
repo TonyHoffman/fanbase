@@ -7,6 +7,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @sports.each do |sport| %>
@@ -15,6 +16,7 @@
     <td><%= sport.season %></td>
     <td><%= link_to 'Show', sport %></td>
     <td><%= link_to 'Edit', edit_sport_path(sport) %></td>
+    <td><%= link_to 'Types', sport_types_path(sport) %></td>
     <td><%= link_to 'Teams', sport_teams_path(sport) %></td>
     <td><%= link_to 'Destroy', sport, confirm: 'Are you sure?', method: :delete %></td>
   </tr>

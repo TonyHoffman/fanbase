@@ -2,6 +2,7 @@
 
 <table class="pretty">
   <tr>
+    <th>id</th>
     <th><%= sortable "last_name", "Last Name" %></th>
     <th><%= sortable "first_name", "First Name" %></th>
     <th><%= sortable "first_game", "First Game" %></th>
@@ -14,6 +15,7 @@
 
 <% @players.each do |player| %>
   <tr>
+	<td><%= player.id %></td>
     <td><%= player.last_name %></td>
     <td><%= player.first_name %></td>
     <td><%= player.first_game %></td>

@@ -19,7 +19,7 @@ module CategoriesHelper
   end
   
   def category_display
-    if (@category.level1 == 'Football') 
+    if (@category.level1 == 'Touchdown') 
       Category::FOOTBALLCATEGORYCHOICES
     else
       Category::HOCKEYCATEGORYCHOICES

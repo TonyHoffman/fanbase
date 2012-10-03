@@ -1,6 +1,7 @@
 Fanbase::Application.routes.draw do
   
   
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy] # the ":only" and hash restricts the full set of CRUD to just those listed
 
@@ -9,13 +10,12 @@ Fanbase::Application.routes.draw do
     resources :teams
   end
   
-
-  # resources :contests
+  resources :sports do
+    resources :types
+  end
   
-  resources :categories
-
-  resources :categories do
-    resources :contests
+  resources :types do
+    resources :events
   end
   
   resources :teams do
@@ -25,6 +25,20 @@ Fanbase::Application.routes.draw do
   resources :teams do
     resources :contests
   end
+      
+  resources :contests do
+    resources :branches
+  end
+  
+  resources :players do
+    resources :branches
+  end
+  
+  resources :users do
+    resources :branches
+  end
+  
+
   
 
   
@@ -40,6 +54,8 @@ Fanbase::Application.routes.draw do
   match '/signup', :to => 'users#new' 
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  
+
 
   
 

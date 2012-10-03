@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Contest:</b>
+  <%= @branch.contest_id %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @branch.type_id %>
+</p>
+
+<p>
+  <b>Player:</b>
+  <%= @branch.player_id %>
+</p>
+
+<p>
+  <b>Master:</b>
+  <%= @branch.master %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @branch.stack_order %>
+</p>
+
+<p>
+  <b>Is player:</b>
+  <%= @branch.is_player %>
+</p>
+
+<p>
+  <b>Is type:</b>
+  <%= @branch.is_type %>
+</p>
+
+<% if @branch.event_id? %>
+<p>
+  <b>Event:</b>
+  <%= @branch.event.description %>
+</p>
+<%end%>
+
+<%= link_to 'Edit', edit_contest_branch_path(@contest, @branch) %> |
+<%= link_to 'Back', contest_branches_path %>

@@ -1,3 +1,16 @@
-<div data-role="header" <%=data_theme%>"b">
-	<h1>Mobile - <%=is_mobile_device?%> - <%= in_mobile_view?%></h1>
+<div data-role="header" <%= data_theme %> >
+	
+	<h1>TB</h1>
+
+	<% if signed_in? %>
+	<%= link_to "Sign Out", signout_path, "class" => "ui-btn-left", "data-mini" => "true", 
+		:confirm => "You sure?" %>
+	<% else %>
+	<%= button_to "Sign in", signin_path, "class" => "ui-btn-left", "data-mini" => "true"%>
+	<%end%>
+
+	<!-- <%= link_to logo, root_path %> -->
+	<!-- <%=logo%> -->
+	
 </div>
+

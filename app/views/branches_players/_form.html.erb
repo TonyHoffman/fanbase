@@ -1,0 +1,33 @@
+<%= form_for(@branches_player) do |f| %>
+  <% if @branches_player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@branches_player.errors.count, "error") %> prohibited this branches_player from being saved:</h2>
+
+      <ul>
+      <% @branches_player.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :branch_id %><br />
+    <%= f.number_field :branch_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player_id %><br />
+    <%= f.number_field :player_id %>
+  </div>
+  <div class="field">
+    <%= f.label : %><br />
+    <%= f.text_field : %>
+  </div>
+  <div class="field">
+    <%= f.label := %><br />
+    <%= f.text_field := %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

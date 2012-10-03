@@ -1,0 +1,44 @@
+
+<%= form_for([@contest, @branch]) do |f| %>
+  <% if @branch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@branch.errors.count, "error") %> prohibited this branch from being saved:</h2>
+
+      <ul>
+      <% @branch.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= f.hidden_field :is_type, :value => @branch.is_type %>
+<%= f.hidden_field :type_id, :value => @branch.type_id %>
+<%= f.hidden_field :is_player, :value => @branch.is_player %>
+<%= f.hidden_field :stack_order, :value => @branch.stack_order %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+
+	<% if @branch.is_player? %>
+  <div>
+    Select the <%=@contest.team.city%> player to get the first <%=@branch.type.event%><br />
+	<%= collection_select(:branch, :player_id, (@contest.team.players.sort_by &:last_name), 		
+		:id, :last_name, options ={:prompt => "Select a player", :include_blank => true}, 
+		:prompt => true) %>
+  </div>
+	<%end%>
+
+	<% if @branch.is_type? %>	
+  <div>
+    <%= f.label @branch.type.event %><br />
+	<% if !@branch.type.nil? %>
+ 		<%= collection_select(:branch, :event_id, (@branch.type.events.sort_by &:stack_order), 		
+		:id, :description, options ={:prompt => "Make your pick", :include_blank => true}, 
+		:prompt => true) %>
+	<% end %>
+  </div>
+	<%end%>
+	
+  <div class="actions">
+    <%= f.submit "Save"%>
+  </div>
+<% end %>

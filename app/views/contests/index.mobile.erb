@@ -1,0 +1,15 @@
+<h3>Next games</h3>
+	<ul data-role="listview" <%=data_theme%> >
+		<% @contests.each do |contest| %>
+		<li class="mypadding">
+		In <%= contest.team.sport.description%> <br>
+		<%= contest.team.city %> vs <%= contest.name %> <br>
+		<%= link_to contest.end.strftime("%B %d, %Y"), new_contest_branch_path(contest)%>
+		</li>
+		<% end %>
+	</ul>
+
+
+
+
+

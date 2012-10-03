@@ -1,0 +1,28 @@
+<h1>Listing events for <%=@type.event%> </h1>
+
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+	<td><%= event.stack_order %></td>
+    <td><%= event.description %></td>
+    <td><%= link_to 'Types', sport_types_path(@type.sport) %></td>
+    <td><%= link_to 'Show', type_event_path(@type, event) %></td>
+    <td><%= link_to 'Edit', edit_type_event_path(@type, event) %></td>
+    <td><%= link_to 'Destroy', type_event_path(@type, event), confirm: 'Are you sure?', 
+								method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Event', new_type_event_path %>

@@ -8,10 +8,12 @@
     <th>Start</th>
     <th>End</th>
     <th></th>
+	<% if signed_in? && admin? %>
+	<th>Branches</th>
     <th></th>
     <th></th>
     <th></th>
-    <th></th>
+	<% end %>
   </tr>
 
 <% @contests.each do |contest| %>
@@ -21,25 +23,23 @@
     <td><%= contest.last_game %></td>
     <td><%= contest.start.to_s(:custom_date_time) %></td>
     <td><%= contest.end.to_s(:custom_date_time) %></td>
+	<td><%= link_to 'Join', new_contest_branch_path(contest) %></td>
+	<% if signed_in? && admin? %>
+   	<td><%= link_to 'Branches', contest_branches_path(contest) %></td>
     <td><%= link_to 'Team', sport_team_path(contest.team.sport, contest.team) %></td>
-    <td><%= link_to 'Categories', categories_path %></td>
-    <td><% if !params[:team_id].nil? %>
-	<%= link_to 'Select Category', team_contest_path(@team, contest) %></td>
-
     <td><%= link_to 'Edit', edit_team_contest_path(@team, contest) %></td>
     <td><%= link_to 'Destroy', 	team_contest_path(@team, contest), 
 								confirm: 'Are you sure?', 
 								method: :delete %></td>
-	<%end%>
+	<% end %>
   </tr>
-<% end %>
+	<% end %>
 </table>
 
+<% if signed_in? && admin? %>
 <% if !params[:team_id].nil? %>
 <%= link_to 'New Contest', new_team_contest_path %>
 <%end%>
-<% if !params[:category_id].nil? %>
-<%= link_to 'Categories', categories_path %>
-<%end%>
+<% end %>
 
 

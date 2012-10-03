@@ -14,13 +14,14 @@ gem 'jquery-rails', '>=1.0.12'
 #   gem 'jquery-ui-rails'
 # end
 
-# gem 'mobylette'
+gem 'mobylette'
 gem 'jquery_mobile_rails'
 
 group :development do
   gem 'rspec-rails', '2.9.0'
   gem 'annotate', '2.4.0'
   gem 'faker', '0.3.1'
+  gem 'debugger'
 end
 
 group :test do

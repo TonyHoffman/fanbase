@@ -1,0 +1,12 @@
+
+<%if admin?%>
+<h1>New branch for <%=@contest.name%> </h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', contest_branches_path %>
+<%else%>
+
+<%= render 'join'%>
+
+<%end%>

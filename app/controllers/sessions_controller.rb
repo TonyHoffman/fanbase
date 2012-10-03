@@ -12,9 +12,14 @@ class SessionsController < ApplicationController
       @title = "Sign in"
       render 'new'
     else
-      sign_in user
-      redirect_back_or user # here "user" really means user_path
+     sign_in user
+      if admin?
+        redirect_to sports_path
+      else
+      # redirect_back_or user # here "user" really means user_path
+      redirect_to contests_path
     end
+  end
   end
   
   def destroy

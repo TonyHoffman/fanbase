@@ -31,13 +31,6 @@
   	<%= @contest.team.city %>
 	<%end%>
 </p>
-<p>
-  <b>Category_id:</b>
-  	<% if !@contest.category.nil?%>
-		<%= @contest.category.level1 %> / <%= @contest.category.level2 %> 
-		/ <%= @contest.category.level3 %> / <%= @contest.category.level4 %>
-	<%end%>
-	</p>
 
 
 
@@ -46,4 +39,3 @@
 
 <br />
 
-<%= render 'categories/index'%>

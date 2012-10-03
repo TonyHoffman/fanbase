@@ -12,4 +12,6 @@ class Team < ActiveRecord::Base
   
   validates :city, :presence => true
   
+  accepts_nested_attributes_for :contests
+  
 end

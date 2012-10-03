@@ -4,11 +4,7 @@ class ContestsController < ApplicationController
   def index
     if !params[:team_id].nil?
       @team = Team.find(params[:team_id])
-      @contests = @team.contests
-    end
-    if !params[:category_id].nil?
-      @category = Category.find(params[:category_id])
-      @contests = @category.contests
+      @contests = @team.contests     
     else
     @contests = Contest.all
     end
@@ -107,30 +103,37 @@ class ContestsController < ApplicationController
   end
   
   
-  def make_contest_category
-    @category = Category.find(params[:category])
-    @contest.find(params[:contest_id])
-    @team = @contest.team
-    # @contest.category = @category
-    @contest.update_attributes(:category_id => @category.id)
-    # @contest = @category.contests.build(params[:contest_id])
-    
-    # @contest.save!
-    
-    respond_to do |format|
-       if @contest.update_attributes(params[:contest])
-         format.html { redirect_to [@team, @contest], notice: 'makeContestCategory was successfully run.' }
-         format.json { head :no_content }
-       else
-         format.html { render action: "edit" }
-         format.json { render json: @category.errors, status: :unprocessable_entity }
-       end
-     end
-    
-  end
+  # def make_contest_category
+  #   @category = Category.find(params[:category])
+  #   @contest.find(params[:contest_id])
+  #   @team = @contest.team
+  #   # @contest.category = @category
+  #   @contest.update_attributes(:category_id => @category.id)
+  #   # @contest = @category.contests.build(params[:contest_id])
+  #   
+  #   # @contest.save!
+  #   
+  #   respond_to do |format|
+  #      if @contest.update_attributes(params[:contest])
+  #        format.html { redirect_to [@team, @contest], notice: 'makeContestCategory was successfully run.' }
+  #        format.json { head :no_content }
+  #      else
+  #        format.html { render action: "edit" }
+  #        format.json { render json: @category.errors, status: :unprocessable_entity }
+  #      end
+  #    end
+  # end
   
   
-  
+  # def joinable_contests
+  #   @contests = Contest.all
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @contests }
+  #     # render :layout => 'joinable_contests'
+  #     render 'joinable_contests'
+  #   end
+  # end
   
   
   

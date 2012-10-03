@@ -1,0 +1,29 @@
+
+<h3>You're in!</h3>
+
+<p>
+You selected 
+<% if @branch.player_id? %>
+  <%= @branch.player.first_name %> <%= @branch.player.last_name %> 
+<%end%>
+
+<% if @branch.event_id? %>
+  <%= @branch.event.description %>
+<%end%>
+
+to get the <%= @branch.type.event %> 
+in the upcoming game against <%= @branch.contest.name%>.<br>
+
+If you're right, your chances of winning are: 
+<b>1 in 
+<% if !@branch.event.nil? %>
+	<%= @branch.event.branches.count%>
+	<%else%>
+	1
+	<%end%></b>
+</p>
+
+<h4>Go back to add another pick and change your chances.<h4>
+
+<%= link_to 'Edit', edit_contest_branch_path(@contest, @branch) %> |
+<%= link_to 'Back', contest_branches_path(@contest) %>

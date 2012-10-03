@@ -10,7 +10,8 @@ module ApplicationHelper
   end
   
   def logo
-    image_tag("TBLogo.jpg", :size => "80x80", :alt => "Trending Buffalo", :class => "round")
+    image_tag("tb_rect_logo.png", :size => "207x40", :alt => "Trending Buffalo", 
+                                  :class => "myfooter")
   end
   
   def body_class

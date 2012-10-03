@@ -57,7 +57,6 @@ class TeamsController < ApplicationController
     respond_to do |format|
       # if @team.save
       if @team.update_attributes(params[:team])
-        
         format.html { redirect_to [@sport, @team], notice: 'Team was successfully created.' }
         format.json { render json: [@team], status: :created, location: [@team] }
       else
