@@ -67,8 +67,8 @@ Fanbase::Application.configure do
   
   #Stuff I added:
   # this precompiles blueprint for heroku
-  config.assets.precompile += %w( blueprint/screen.css blueprint/print.css blueprint/ie.css )
-  
+  # config.assets.precompile += %w( blueprint/screen.css blueprint/print.css blueprint/ie.css )
+  config.assets.precompile += %w( *.css *.js )
   
   
   
