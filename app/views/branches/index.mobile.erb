@@ -8,11 +8,11 @@
 		<%= branch.type.event %> -
 	<%end%> 
 	<% if branch.player_id? %>
-		<%=branch.player.last_name%><br>
+		<%=branch.player.last_name%>
 		(1 of <%= branch.player.branches.count %>)
 	<%end%> 
 	<% if branch.event_id? %>
-		<%=branch.event.description%> <br>
+		<%=branch.event.description%>
 		(1 of <%= branch.event.branches.count %>)
 	<%end%>	
 	<%= link_to '', edit_contest_branch_path(@contest, branch) %>

@@ -16,7 +16,7 @@
 
 
 
-If you're right, your chances of winning are: 
+If you're right, your chances of winning are currently: 
 <b>1 in 
 <% if !@branch.event.nil? %>
 	<%= @branch.event.branches.count%>
@@ -25,7 +25,8 @@ If you're right, your chances of winning are:
 	<%end%></b>
 </p>
 
-<h4>Go back to add another pick and change your chances.<h4>
+<h4>Go back to add another pick and change your chance 
+	(or come back later to see if your chances have changed).<h4>
 
 <%= link_to 'Edit', edit_contest_branch_path(@contest, @branch) %> |
 <%= link_to 'Back', contest_branches_path(@contest) %>
