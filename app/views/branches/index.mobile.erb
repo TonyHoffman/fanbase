@@ -1,26 +1,33 @@
 <h3>My Picks for: <br/> 
 <%= @contest.team.city%> against <%= @contest.name%></h3>
 
-<ul data-role="listview" <%=data_theme%> >
+<ul data-role="listview" <%=data_theme%>>
 	<% @branches.each do |branch| %>
-	<li class="mypadding">
+	<li class="mypadding" data-mini="true">
 	<% if branch.type_id? %>
 		<%= branch.type.event %> -
 	<%end%> 
 	<% if branch.player_id? %>
-		<%= branch.player.last_name %>
+		<%=branch.player.last_name%><br>
+		(1 of <%= branch.player.branches.count %>)
 	<%end%> 
 	<% if branch.event_id? %>
-		<%= branch.event.description %>
+		<%=branch.event.description%> <br>
+		(1 of <%= branch.event.branches.count %>)
 	<%end%>	
-    <%= link_to '', edit_contest_branch_path(@contest, branch) %>
-	</li>
+	<%= link_to '', edit_contest_branch_path(@contest, branch) %>
+	<% if branch.id == @branches.last.id%>
+		<%= button_to 'Delete', contest_branch_path(@contest, branch), 
+						"class" => "ui-btn-left", "data-mini" => "true",
+						confirm: 'Are you sure?', method: :delete %>
+	<%end%>
 	<% end %>
+	</li>
 <br />
 
 <div class="mypadding">
 <% if @branches.count < 4 then %>
-<%= link_to 'New Branch', new_contest_branch_path, :controller => 'branches',
+<%= link_to 'Add a pick', new_contest_branch_path, :controller => 'branches',
 			:action => :new, "class" => "ui-btn-center", "data-mini" => "true"%>
 <%end%>
 </div>

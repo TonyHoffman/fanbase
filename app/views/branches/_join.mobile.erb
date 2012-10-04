@@ -20,7 +20,7 @@
 
 	<% if @branch.is_player? %>
   <div>
-    Select the <%=@contest.team.city%> player to get the first <%=@branch.type.event%><br />
+    Select the <%=@contest.team.city%> player to get the <%=@branch.type.event%><br />
 	<%= collection_select(:branch, :player_id, (@contest.team.players.sort_by &:last_name), 		
 		:id, :last_name, options ={:prompt => "Select a player", :include_blank => true}, 
 		:prompt => true) %>
@@ -41,4 +41,4 @@
   <div class="actions">
     <%= f.submit "Save"%>
   </div>
-<% end %>
+<% end %>					

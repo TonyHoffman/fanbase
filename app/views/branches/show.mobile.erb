@@ -2,17 +2,19 @@
 <h3>You're in!</h3>
 
 <p>
-You selected 
+ 
 <% if @branch.player_id? %>
-  <%= @branch.player.first_name %> <%= @branch.player.last_name %> 
+ 	You selected <%= @branch.player.first_name %> <%= @branch.player.last_name %> 
+	to get the <%= @branch.type.event %> in the upcoming game against 
+	<%= @branch.contest.name%>.<br>
 <%end%>
 
 <% if @branch.event_id? %>
-  <%= @branch.event.description %>
+  	You added <%= @branch.event.description %> <%= @branch.type.event %> to 
+	to your picks for the upcoming game against <%= @branch.contest.name%>.<br>
 <%end%>
 
-to get the <%= @branch.type.event %> 
-in the upcoming game against <%= @branch.contest.name%>.<br>
+
 
 If you're right, your chances of winning are: 
 <b>1 in 
