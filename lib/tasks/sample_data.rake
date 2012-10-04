@@ -3,7 +3,7 @@
 namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
-   require 'faker'
+   # require 'faker'
    make_users
    # populate_2012_buffalo_football
  end
