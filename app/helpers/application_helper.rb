@@ -45,7 +45,7 @@ module ApplicationHelper
     count = Branch.find(:all, 
             :conditions => ["player_id = ? and contest_id =?", player_id, 
             contest_id]).count
-    if count < 2 then count = 'You own this pick'
+    if count < 2 then player_info + ' (You own this pick)'
     else 
       count - 1 
       player_info + ' (' + pluralize(count, 'other') + ')'
@@ -58,12 +58,11 @@ module ApplicationHelper
     count = Branch.find(:all, 
             :conditions => ["event_id = ? and contest_id =?", event_id, 
             contest_id]).count
-    if count < 2 then count = 'You own this pick' 
+    if count < 2 then event_info + '(You own this pick)' 
       else 
         count - 1 
-        event_info + ' (' + pluralize(count, 'other') + ')'
       end
-
+      event_info + ' (' + pluralize(count, 'other') + ')'
   end
   
   

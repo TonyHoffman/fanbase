@@ -28,6 +28,5 @@ If you're right, your chances of winning are currently:
 <h4>Go back to add another pick and change your chance 
 	(or come back later to see if your chances have changed).<h4>
 
-
 <%= link_to 'Edit', edit_contest_branch_path(@contest, @branch) %> | 
-<%= link_to 'Back', contest_branches_path %>
+<%= link_to 'Back', contest_branches_path, :method => :get %>
