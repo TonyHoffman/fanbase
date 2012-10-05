@@ -15,5 +15,6 @@ class Branch < ActiveRecord::Base
                   :event_id, :user_id, :contest_id, :id
                   
 
+
   
 end

@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  include PlayersHelper
   helper_method :sort_column, :sort_direction
   
   # GET /players

@@ -38,8 +38,15 @@
 	<% end %>
   </div>
 	<%end%>
-	
-  <div class="actions">
+  <div>
     <%= f.submit "Save"%>
   </div>
+	<div>
+	<% if !@branch.id.nil?%>
+	<%= button_to 'Delete this pick', contest_branch_path(@contest, @branch), 	
+		:confirm => 'Are you sure?', method: :delete  %>
+	</div>
+	<%end%>
+
+
 <% end %>					

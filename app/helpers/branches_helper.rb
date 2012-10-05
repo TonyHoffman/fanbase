@@ -54,9 +54,4 @@ module BranchesHelper
       end
   end
 
-  # def full_branches
-  #   if current_user.
-  # end
-  
-  
 end

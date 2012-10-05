@@ -5,9 +5,13 @@ class Contest < ActiveRecord::Base
   belongs_to :team, :foreign_key => "team_id"
   
   has_many :branches
+  has_many :events
   
   # belongs_to  :category, :class_name => 'Category', :foreign_key =>"category_id"
   accepts_nested_attributes_for :branches
   
-  
+  def players_count
+    
+  end
+
 end

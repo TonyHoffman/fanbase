@@ -39,7 +39,32 @@ module ApplicationHelper
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
   
+  def player_pick_info(player_id, contest_id)
+    player_info = Player.find(:all, 
+                  :conditions => ["id = ?", player_id])[0].player_name
+    count = Branch.find(:all, 
+            :conditions => ["player_id = ? and contest_id =?", player_id, 
+            contest_id]).count
+    if count < 2 then count = 'You own this pick'
+    else 
+      count - 1 
+      player_info + ' (' + pluralize(count, 'other') + ')'
+    end
+  end
   
+  def event_pick_info(event_id, contest_id)
+    event_info = Event.find(:all, 
+                  :conditions => ["id = ?", event_id])[0].description
+    count = Branch.find(:all, 
+            :conditions => ["event_id = ? and contest_id =?", event_id, 
+            contest_id]).count
+    if count < 2 then count = 'You own this pick' 
+      else 
+        count - 1 
+        event_info + ' (' + pluralize(count, 'other') + ')'
+      end
+
+  end
   
   
 end
