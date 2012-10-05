@@ -22,7 +22,7 @@
   <div>
     Select the <%=@contest.team.city%> player to get the <%=@branch.type.event%><br />
 	<%= collection_select(:branch, :player_id, (@contest.team.players.sort_by &:last_name), 		
-		:id, :last_name, options ={:prompt => "Select a player", :include_blank => true}, 
+		:id, :player_name, options ={:prompt => "Select a player", :include_blank => true}, 
 		:prompt => true) %>
   </div>
 	<%end%>
