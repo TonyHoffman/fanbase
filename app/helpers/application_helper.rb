@@ -39,6 +39,13 @@ module ApplicationHelper
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
   
+  
+  def this_user_contest_branches(user_id, contest_id)
+    @branches = Branch.find(:all, 
+                  :conditions => ["user_id = ? and contest_id = ?", user_id,
+                  contest_id])
+  end
+  
   def player_pick_info(player_id, contest_id)
     player_info = Player.find(:all, 
                   :conditions => ["id = ?", player_id])[0].player_name

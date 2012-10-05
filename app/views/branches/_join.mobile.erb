@@ -42,11 +42,12 @@
     <%= f.submit "Save"%>
   </div>
 	<div>
-	<% if !@branch.id.nil?%>
+	<% if !@branch.id.nil? && @branch.id == this_user_contest_branches(current_user.id, @contest.id).last.id%>
 	<%= button_to 'Delete this pick', contest_branch_path(@contest, @branch), 	
 		:confirm => 'Are you sure?', method: :delete  %>
-	</div>
 	<%end%>
+	</div>
+
 
 
 <% end %>					
