@@ -43,7 +43,7 @@ module ApplicationHelper
   def this_user_contest_branches(user_id, contest_id)
     @branches = Branch.find(:all, 
                   :conditions => ["user_id = ? and contest_id = ?", user_id,
-                  contest_id])
+                  contest_id], :order => 'stack_order')
   end
   
   def player_pick_info(contest_id, stack_order, player_id, event_id, prev_01, prev_02, prev_03)
