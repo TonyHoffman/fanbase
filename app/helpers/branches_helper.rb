@@ -25,8 +25,8 @@ module BranchesHelper
     master_branches = Branch.find(:all, 
                         :conditions => ["master = ? and contest_id =?", true, 
                         params[:contest_id]], :order => :stack_order)
-    if !master_branches.empty?
-      if @last_live_user_branch.nil?
+    if !master_branches.empty? then
+      if @last_live_user_branch.nil? then
         @live_master_branch = master_branches[0]
         else
         if @user_branches.count < master_branches.count then p = @user_branches.count else p = master_branches.count - 1 end
