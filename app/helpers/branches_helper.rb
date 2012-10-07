@@ -89,5 +89,14 @@ module BranchesHelper
     end
   end
   
+  def show_branch_prize(contest_id, user_id)
+    stack_order = Branch.find(:all,
+                              :conditions => ["contest_id =? and user_id =?",
+                                              contest_id, user_id], 
+                              :order => :stack_order).last.stack_order
+    prize = Branch.find(:all, 
+                        :conditions => ["contest_id =? and stack_order =? and master =?", 
+                                        contest_id, stack_order, 'true'])[0].prize.to_s()
+  end
   
 end
