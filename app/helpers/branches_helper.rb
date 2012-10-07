@@ -29,7 +29,7 @@ module BranchesHelper
       if @last_live_user_branch.nil?
         @live_master_branch = master_branches[0]
         else
-        if master_branches.count < @user_branches.count then p = master_branches.count-1 else p = @user_branches.count end
+        if master_branches.count <= @user_branches.count then p = master_branches.count-1 else p = @user_branches.count end
         @live_master_branch = master_branches[p]
       end
     end
@@ -63,7 +63,7 @@ module BranchesHelper
      end
   end
 
-  def show_odds_this_branch(contest_id, stack_order, player_id, event_id, prev_01, prev_02, prev_03 )
+  def show_odds_this_branch(contest_id, stack_order, player_id, event_id, prev_01, prev_02, prev_03)
     if stack_order == 1 && !player_id.nil? then
     same_branches = Branch.find(:all, 
                     :conditions => ["contest_id =? and stack_order =? and player_id =?", 

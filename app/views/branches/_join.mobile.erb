@@ -33,7 +33,7 @@
 	<% if @branch.is_type? %>	
   <div>
 	Change your odds of winning by refining your pick.<br />
-	Select the <%= f.label @branch.type.event %> for your first pick.<br />
+	Select the <%= f.label @branch.type.event %> for your pick.<br />
 	<% if !@branch.type.nil? %>
  		<%= collection_select(:branch, :event_id, (@branch.type.events.sort_by &:stack_order), 		
 		:id, :description, options ={:prompt => "Make your pick", :include_blank => true}, 

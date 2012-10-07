@@ -8,13 +8,13 @@
 		<%= branch.type.event %>
 	<%end%> 
 	<% if branch.player_id? %>
-		<%= link_to player_pick_info(@contest_id, branch.stack_order, branch.player_id, 
-					branch.event_id, branch.prev_01, branch.prev_02, branch.prev_03), 
+		<%= link_to (branch.player.player_name + " (" + show_odds_this_branch(branch.contest_id, branch.stack_order, branch.player_id, 
+					branch.event_id, branch.prev_01, branch.prev_02, branch.prev_03) + ")"), 
 					edit_contest_branch_path(@contest, branch) %>
 	<%end%> 
 	<% if branch.event_id? %>
-	<%= link_to event_pick_info(@contest_id, branch.stack_order, branch.player_id, 
-				branch.event_id, branch.prev_01, branch.prev_02, branch.prev_03), 
+	<%= link_to (branch.event.description + " (" + show_odds_this_branch(branch.contest_id, branch.stack_order, branch.player_id, 
+				branch.event_id, branch.prev_01, branch.prev_02, branch.prev_03) + ")"), 
 				edit_contest_branch_path(@contest, branch) %>
 	<%end%>
 	<%end %>
