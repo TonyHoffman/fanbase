@@ -1,8 +1,6 @@
-
 <h3>You're in!</h3>
 
 <p>
- 
 <% if @branch.player_id? %>
  	You selected <%= @branch.player.first_name %> <%= @branch.player.last_name %> 
 	to get the <%= @branch.type.event %> in the upcoming game against 
@@ -14,19 +12,23 @@
 	to your picks for the upcoming game against <%= @branch.contest.name%>.<br>
 <%end%>
 
-
-
-If you're right, your chances of winning are currently: 
-<b>1 in 
-<% if !@branch.event.nil? %>
-	<%= @branch.event.branches.count%>
-	<%else%>
-	1
-	<%end%></b>
+(<%= show_odds_this_branch(@branch.contest_id, @branch.stack_order, @branch.player_id, 
+@branch.event_id, @branch.prev_01, @branch.prev_02, @branch.prev_03)%> have selected this.)
 </p>
 
-<h4>Go back to add another pick and change your chance 
-	(or come back later to see if your chances have changed).<h4>
+<div>
+<% if !@branch.id.nil? && @branch.id == this_user_contest_branches(current_user.id, @contest.id).last.id%>
+<%= button_to 'Delete this pick', contest_branch_path(@contest, @branch), 	
+	:confirm => 'Are you sure?', method: :delete  %>
+<%end%>
+</div>
 
-<%= link_to 'Edit', edit_contest_branch_path(@contest, @branch) %> | 
-<%= link_to 'Back', contest_branches_path, :method => :get %>
+<h4>
+<% if @branches.count < 4 %>
+	<%= link_to 'Add', contest_branches_path, :method => :get %> another pick 
+	<%else %>
+	<%= link_to 'Look', contest_branches_path, :method => :get %> at all my picks
+	<%end%>
+	<%= link_to 'back', edit_contest_branch_path(@contest, @branch) %> 
+	or go back to change my last selection.
+</h4>

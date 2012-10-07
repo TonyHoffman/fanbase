@@ -12,9 +12,13 @@ class Branch < ActiveRecord::Base
   belongs_to :event, :class_name => 'Event', :foreign_key => "event_id"  
   
   attr_accessible :master, :stack_order, :is_player, :is_type, :type_id, :player_id, 
-                  :event_id, :user_id, :contest_id, :id
+                  :event_id, :user_id, :contest_id, :id, :branch_id, :prev_01, 
+                  :prev_02, :prev_03, :prev_04
                   
-
+  def id_to_compare
+    if is_player == true && !player_id.nil? then player_id end
+    if is_event == true && !event_id.nil? then event_id end
+  end
 
   
 end

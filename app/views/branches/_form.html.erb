@@ -21,6 +21,12 @@
     <%= f.check_box :master %>
   </div>
   <div class="field">
+	<%= @contest.name %> - <%=@branch.prev_01 %> - <%=@branch.prev_02 %> - <%=@branch.prev_03 %>
+	Stack order is <%=@branch.stack_order%>
+  </div>
+
+
+  <div class="field">
     <%= f.label :type %><br />
 	<%= collection_select(:branch, :type_id, (@contest.team.sport.types.sort_by &:stack_order), 
 		:id, :event, options ={:prompt => "-Select an event", :include_blank => true},

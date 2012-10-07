@@ -5,6 +5,7 @@
     <th>User</th>
     <th>Type</th>
     <th>Order</th>
+    <th>Prevs</th>
     <th>Is player</th>
     <th>Is type</th>
     <th>Player</th>
@@ -22,14 +23,17 @@
 			<%end%>
 	</td>
 	<td><%= branch.stack_order %></td>
+	<td><%= branch.prev_01 %>, <%= branch.prev_02 %>, <%= branch.prev_03 %>
+		(<%= show_odds_this_branch(branch.contest_id, branch.stack_order, branch.player_id, 
+		branch.event_id, branch.prev_01, branch.prev_02, branch.prev_03)%>)</td>
 	<td><%= branch.is_player %></td>
     <td><%= branch.is_type %></td>
  	<td>	<% if branch.player_id? %>
-			<%= branch.player.last_name %> (<%= branch.player.branches.count%>)
+			<%= branch.player.last_name %>
 			<%end%>
 	</td>
     <td><% if branch.event_id? %>
-		<%= branch.event.description %> (<%= branch.event.branches.count%>)
+		<%= branch.event.description %> 
 		<%end%>	
 	</td>
     <td><%= link_to 'Edit', edit_contest_branch_path(@contest, branch) %></td>

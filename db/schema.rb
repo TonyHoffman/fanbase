@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928202448) do
+ActiveRecord::Schema.define(:version => 20121006193345) do
 
   create_table "branches", :force => true do |t|
     t.integer  "contest_id"
@@ -22,9 +22,14 @@ ActiveRecord::Schema.define(:version => 20120928202448) do
     t.boolean  "is_player"
     t.boolean  "is_type"
     t.integer  "event_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "user_id"
+    t.integer  "branch_id"
+    t.integer  "prev_01"
+    t.integer  "prev_02"
+    t.integer  "prev_03"
+    t.integer  "branch_id_five"
   end
 
   create_table "branches_players", :id => false, :force => true do |t|

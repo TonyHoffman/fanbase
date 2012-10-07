@@ -46,31 +46,22 @@ module ApplicationHelper
                   contest_id])
   end
   
-  def player_pick_info(player_id, contest_id)
+  def player_pick_info(contest_id, stack_order, player_id, event_id, prev_01, prev_02, prev_03)
     player_info = Player.find(:all, 
                   :conditions => ["id = ?", player_id])[0].player_name
-    count = Branch.find(:all, 
-            :conditions => ["player_id = ? and contest_id =?", player_id, 
-            contest_id]).count
-    if count < 2 then player_info + ' (You own this pick)'
-    else 
-      count - 1 
-      player_info + ' (' + pluralize(count, 'other') + ')'
-    end
+    player_info + ' (' + show_odds_this_branch(contest_id, stack_order, player_id, event_id, prev_01, prev_02, prev_03) + ')'
   end
   
-  def event_pick_info(event_id, contest_id)
+  def event_pick_info(contest_id, stack_order, player_id, event_id, prev_01, prev_02, prev_03)
     event_info = Event.find(:all, 
                   :conditions => ["id = ?", event_id])[0].description
-    count = Branch.find(:all, 
-            :conditions => ["event_id = ? and contest_id =?", event_id, 
-            contest_id]).count
-    if count < 2 then event_info + '(You own this pick)' 
-      else 
-        count - 1 
-      end
-      event_info + ' (' + pluralize(count, 'other') + ')'
+    event_info + ' (' + show_odds_this_branch(contest_id, stack_order, player_id, event_id, prev_01, prev_02, prev_03) + ')'
   end
   
+  def count_these_first_branches
+    ctfb = Branch.find(:all, 
+            :conditions => ["player_id = ? and contest_id =?", player_id, 
+            contest_id]).count
+  end
   
 end

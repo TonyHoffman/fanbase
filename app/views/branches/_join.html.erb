@@ -17,10 +17,14 @@
 <%= f.hidden_field :type_id, :value => @branch.type_id %>
 <%= f.hidden_field :is_player, :value => @branch.is_player %>
 <%= f.hidden_field :stack_order, :value => @branch.stack_order %>
+<%= f.hidden_field :prev_01, :value => @branch.prev_01 %>
+<%= f.hidden_field :prev_02, :value => @branch.prev_02 %>
+<%= f.hidden_field :prev_03, :value => @branch.prev_03 %>
 <%= f.hidden_field :user_id, :value => current_user.id %>
 
   <div class="field">
-	<%= @contest.name %>
+	<%= @contest.name %> - <%=@branch.prev_01 %> - <%=@branch.prev_02 %> - <%=@branch.prev_03 %>
+	Stack order is <%=@branch.stack_order%>
   </div>
 
 	<% if @branch.is_player? %>

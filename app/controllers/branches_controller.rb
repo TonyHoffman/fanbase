@@ -36,8 +36,9 @@ class BranchesController < ApplicationController
   # GET /branches/new.json
   def new
     get_parent_contest
-    get_next_master_branch
+    # get_live_master_branch
     @branch = Branch.new(attr_for_join_branch)
+    # set_branch_ids
     respond_to do |format|
       format.mobile      
       format.html # new.html.erb
