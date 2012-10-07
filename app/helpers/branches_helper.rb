@@ -29,7 +29,7 @@ module BranchesHelper
       if @last_live_user_branch.nil?
         @live_master_branch = master_branches[0]
         else
-        if @user_branches.count < master_branches.count then p = @user_branches.count else p = master.branches.count - 1 end
+        if @user_branches.count < master_branches.count then p = @user_branches.count else p = master_branches.count - 1 end
         @live_master_branch = master_branches[p]
       end
     end
