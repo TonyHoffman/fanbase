@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   config[:fallback_chains] = { mobile: [:mobile, :html] }
     config[:skip_xhr_requests] = false
     # config[:mobile_user_agents] = proc { %r{iphone}i }
-    config[:mobile_user_agents] = proc { %r{iphone | ipad | ios | android}}i }
+    config[:mobile_user_agents] = proc { %r{iphone|ipad|ios|android}i }
     
   end
   
