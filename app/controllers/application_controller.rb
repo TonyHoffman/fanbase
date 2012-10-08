@@ -6,59 +6,7 @@ class ApplicationController < ActionController::Base
   config[:fallback_chains] = { mobile: [:mobile, :html] }
     config[:skip_xhr_requests] = false
     # config[:mobile_user_agents] = proc { %r{iphone}i }
-    config[:mobile_user_agents] = proc { %r{palm
-                                          blackberry
-                                          nokia
-                                          phone
-                                          midp
-                                          mobi
-                                          symbian
-                                          chtml
-                                          ericsson
-                                          minimo
-                                          audiovox
-                                          motorola
-                                          samsung
-                                          telit
-                                          upg1
-                                          windows\ ce
-                                          ucweb
-                                          astel
-                                          plucker
-                                          x320
-                                          x240
-                                          j2me
-                                          sgh
-                                          portable
-                                          sprint
-                                          docomo
-                                          kddi
-                                          softbank
-                                          android
-                                          mmp
-                                          pdxgw
-                                          netfront
-                                          xiino
-                                          vodafone
-                                          portalmmm
-                                          sagem
-                                          mot-
-                                          sie-
-                                          ipod
-                                          up.b
-                                          webos
-                                          amoi
-                                          novarra
-                                          cdm
-                                          alcatel
-                                          pocket
-                                          ipad
-                                          iphone
-                                          mobileexplorer
-                                          mobile
-                                          maemo
-                                          fennec
-                                          silk}i }
+    config[:mobile_user_agents] = proc { %r{iphone | ipad | ios | android}}i }
     
   end
   
