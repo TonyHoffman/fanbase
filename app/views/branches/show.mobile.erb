@@ -2,7 +2,7 @@
 
 <p>
 <% if @branch.player_id? %>
- 	You selected <%= @branch.player.first_name %> <%= @branch.player.last_name %> 
+ 	You selected <%= @branch.player.name %> 
 	to get the <%= @branch.type.event %> in the upcoming game against 
 	<%= @branch.contest.name%>.<br>
 <%end%>
@@ -27,7 +27,7 @@
 
 
 <h4>
-<% if @branches.count < 4 %>
+<% if @branches.count < 1 %>
 	<%= link_to 'Add', contest_branches_path, :method => :get %> another pick for a chance to win 
 	<%=show_next_branch_prize(@branch.contest_id, current_user.id)%> or go 
 	<%else %>

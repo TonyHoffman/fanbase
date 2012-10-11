@@ -84,7 +84,7 @@ module BranchesHelper
                     :conditions => ["contest_id =? and stack_order =? and event_id =? and prev_01 =? and prev_02 =? and prev_03 =?", 
                                     contest_id, stack_order, event_id, prev_01, prev_02, prev_03])    
     end                                
-   if !same_branches.nil? then pluralize(same_branches.count.to_s(), ' other') end
+   if !same_branches.nil? then pluralize(same_branches.count-1.to_s(), ' other') end
   end
   
   def show_branch_prize(contest_id, user_id)
