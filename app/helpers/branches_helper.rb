@@ -84,7 +84,10 @@ module BranchesHelper
                     :conditions => ["contest_id =? and stack_order =? and event_id =? and prev_01 =? and prev_02 =? and prev_03 =?", 
                                     contest_id, stack_order, event_id, prev_01, prev_02, prev_03])    
     end                                
-   if !same_branches.nil? then pluralize(same_branches.count-1.to_s(), ' other') end
+   if !same_branches.nil? then 
+      count = same_branches.count-1
+      pluralize(count.to_s(), ' other') 
+      end
   end
   
   def show_branch_prize(contest_id, user_id)
@@ -108,5 +111,14 @@ module BranchesHelper
                                         contest_id, stack_order + 1, 'true'])[0]
     if !next_prize.nil? then next_prize.prize.to_s() end
   end
+  
+  def master_branch_count_this_contest(contest_id)
+    master_count = Branch.find(:all,
+                              :conditions => ["contest_id =? and master =?",
+                                              contest_id, 'true'], 
+                              :order => :stack_order).count
+  end
+  
+  
   
 end
