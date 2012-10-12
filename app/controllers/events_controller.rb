@@ -1,4 +1,10 @@
 class EventsController < ApplicationController
+  
+  before_filter :authenticate
+  before_filter :authenticate_admin
+  
+  
+  
   # GET /events
   # GET /events.json
   def index

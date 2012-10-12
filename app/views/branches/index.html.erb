@@ -1,47 +1,89 @@
-<h1>Listing branches for <%= @contest.name%></h1>
+<%if !current_user.admin? then%> 
+	<h3>My Picks for: <br/> 
+	<%= @contest.team.city%> against <%= @contest.name%></h3>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Type</th>
-    <th>Order</th>
-    <th>Is player</th>
-    <th>Is type</th>
-    <th>Player</th>
-    <th>Event</th>
-    <th>Prize</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @branches.each do |branch| %>
-  <tr>
-    <td><%= branch.user.name %></td>
-    <td>	<% if branch.type_id? %>
-			<%= branch.type.event %>
+	<table>
+		<table>
+		  <tr>
+			<th></th>
+		    <th></th>
+			</tr>
+		
+		<% @branches.each do |branch| %>
+		  <tr>
+			<td><% if branch.type_id? %><%= branch.type.event %><%end%></td>
+		    <td>
+			<% if branch.player_id? %>
+			<%= link_to (branch.player.player_name + " (" + show_odds_this_branch(branch.contest_id, branch.stack_order, branch.player_id, 
+						branch.event_id, branch.prev_01, branch.prev_02, branch.prev_03) + ")"), 
+						if branch.contest.end > DateTime.now then
+							edit_contest_branch_path(@contest, branch) else
+							contest_branch_path(@contest, branch) end %>
+			<%end%> 
+			<% if branch.event_id? %>
+			<%= link_to (branch.event.description + " (" + show_odds_this_branch(branch.contest_id, branch.stack_order, branch.player_id, 
+						branch.event_id, branch.prev_01, branch.prev_02, branch.prev_03) + ")"), 
+						edit_contest_branch_path(@contest, branch) %>
 			<%end%>
-	</td>
-	<td><%= branch.stack_order %></td>
-	<td><%= branch.is_player %></td>
-    <td><%= branch.is_type %></td>
- 	<td>	<% if branch.player_id? %>
-			<%= branch.player.last_name %>
-			<%end%>
-	</td>
-    <td><% if branch.event_id? %>
-		<%= branch.event.description %> 
-		<%end%>	
-	</td>
-	<td><%=branch.prize%>
-    <td><%= link_to 'Edit', edit_contest_branch_path(@contest, branch) %></td>
-    <td><%= link_to 'Destroy', contest_branch_path(@contest, branch), 
-								confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+		<%end %>
+		</td>
 
-<br />
+	<div class="button">
+	<% if @branches.count < master_branch_count_this_contest(@contest.id) && 
+		 	@contest.end > DateTime.now then %>
+	<%= link_to 'Add a pick', new_contest_branch_path, :controller => 'branches',
+				:action => :new, "data-role" => "button", "class" => "ui-btn-center", 
+				"data-mini" => "true", "data-inline" => "true"%>
+	<%end%>
+	</div>
 
-<%= link_to 'New Branch', new_contest_branch_path%>
+<%else%>
+
+	<h1>Listing branches for <%= @contest.name%></h1>
+		<table>
+		  <tr>
+			<th><%=User%></th>
+		    <th>Type</th>
+		    <th>Order</th>
+		    <th>Is player</th>
+		    <th>Is type</th>
+		    <th>Player</th>
+		    <th>Event</th>
+		    <th>Prize</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+
+		<% @branches.each do |branch| %>
+		  <tr>
+			<td><%=branch.user.name%></td>
+		    <td>	<% if branch.type_id? %>
+					<%= branch.type.event %>
+					<%end%>
+			</td>
+			<td><%= branch.stack_order %></td>
+			<td><%= branch.is_player %></td>
+		    <td><%= branch.is_type %></td>
+		 	<td>	<% if branch.player_id? %>
+					<%= branch.player.last_name %>
+					<%end%>
+			</td>
+		    <td><% if branch.event_id? %>
+				<%= branch.event.description %> 
+				<%end%>	
+			</td>
+			<td><%=branch.prize%>
+		    <td><%= link_to 'Edit', edit_contest_branch_path(@contest, branch) %></td>
+		    <td><%= link_to 'Destroy', contest_branch_path(@contest, branch), 
+										confirm: 'Are you sure?', method: :delete %></td>
+		  </tr>
+		<% end %>
+		</table>
+
+		<br />
+
+		<%= link_to 'New Branch', new_contest_branch_path%>
+
+<%end%>
 

@@ -1,51 +1,42 @@
-<p id="notice"><%= notice %></p>
+<h2>You are entered to win <%=get_this_master_branch(@branch.contest_id, @branch.stack_order).prize.to_s()%>*
+	from <%=link_to get_this_master_branch(@branch.contest_id, @branch.stack_order).sponsor.to_s(), 
+	get_this_master_branch(@branch.contest_id, @branch.stack_order).url_address.to_s()%>!</h2>
 
 <p>
-  <b>Contest:</b>
-  <%= @branch.contest_id %>
-</p>
-
-<p>
-  <b>Type:</b>
-  <%= @branch.type_id %>
-</p>
-
-<p>
-  <b>branch_ids</b>
-  <%= @branch.prev_01 %>, <%= @branch.prev_02 %>, <%= @branch.prev_03 %>
-</p>
-
-<p>
-  <b>Player:</b>
-  <%= @branch.player_id %>
-</p>
-
-<p>
-  <b>Master:</b>
-  <%= @branch.master %>
-</p>
-
-<p>
-  <b>Order:</b>
-  <%= @branch.stack_order %>
-</p>
-
-<p>
-  <b>Is player:</b>
-  <%= @branch.is_player %>
-</p>
-
-<p>
-  <b>Is type:</b>
-  <%= @branch.is_type %>
-</p>
-
-<% if @branch.event_id? %>
-<p>
-  <b>Event:</b>
-  <%= @branch.event.description %>
-</p>
+<% if @branch.player_id? %>
+ 	You selected <%= @branch.player.player_name %> 
+	to get the <%= @branch.type.event %> in the upcoming game against 
+	<%= @branch.contest.name%>.<br>
 <%end%>
 
-<%= link_to 'Edit', edit_contest_branch_path(@contest, @branch) %> |
-<%= link_to 'Back', contest_branches_path %>
+<% if @branch.event_id? %>
+  	You added <%= @branch.event.description %> <%= @branch.type.event %> to 
+	to your picks for the upcoming game against <%= @branch.contest.name%>.
+<%end%>
+
+<small>
+(* If this pick is correct, winner will be randomly drawn from your name and 
+	<%= show_odds_this_branch(@branch.contest_id, @branch.stack_order, @branch.player_id, 
+	@branch.event_id, @branch.prev_01, @branch.prev_02, @branch.prev_03)%>.)
+</small>
+</p>
+<div>
+<% if @contest.end > DateTime.now then%>	
+	<% if !@branch.id.nil? && @branch.id == this_user_contest_branches(current_user.id, @contest.id).last.id%>
+	<%= button_to 'Delete this pick', contest_branch_path(@contest, @branch), 	
+		:confirm => 'Are you sure?', method: :delete  %>
+	<%end%>
+	</div>
+
+<br/>
+	<h4>
+	<% if @branches.count < master_branch_count_this_contest(@branch.contest_id) %>
+		<%= link_to 'Add', contest_branches_path, :method => :get %> another pick for a chance to win 
+		<%=show_next_branch_prize(@branch.contest_id, current_user.id)%> or go 
+		<%else %>
+		<%= link_to 'See', contest_branches_path, :method => :get %> my picks or go 
+		<%end%>
+		<%= link_to 'back', edit_contest_branch_path(@contest, @branch) %> 
+		 to change my last selection.
+	</h4>
+<%end%>

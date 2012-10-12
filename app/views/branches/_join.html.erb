@@ -1,5 +1,3 @@
-<p>Join Layout</p>
-
 <%= form_for([@contest, @branch]) do |f| %>
   <% if @branch.errors.any? %>
     <div id="error_explanation">
@@ -22,18 +20,15 @@
 <%= f.hidden_field :prev_03, :value => @branch.prev_03 %>
 <%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <div class="field">
-	<%= @contest.name %> - <%=@branch.prev_01 %> - <%=@branch.prev_02 %> - <%=@branch.prev_03 %>
-	Stack order is <%=@branch.stack_order%>
-  </div>
 
 	<% if @branch.is_player? %>
-  <div class="field">
-    <%= f.label :player_id %><br />
+
+  	<h2> Select the <%=@contest.team.city%> player to get the <%=@branch.type.event%>
+	</h2> <br />
 	<%= collection_select(:branch, :player_id, (@contest.team.players.sort_by &:last_name), 		
-		:id, :last_name, options ={:prompt => "Select a player", :include_blank => true}, 
+		:id, :player_name, options ={:prompt => "Select a player", :include_blank => true}, 
 		:prompt => true) %>
-  </div>
+
 	<%end%>
 
 	<% if @branch.is_type? %>	
@@ -48,6 +43,6 @@
 	<%end%>
 	
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save"%>
   </div>
 <% end %>

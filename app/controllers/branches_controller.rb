@@ -10,8 +10,8 @@ class BranchesController < ApplicationController
       @branches = @contest.branches.order(:user_id, :stack_order)  
       else 
       @branches = Branch.find(:all, 
-                          :conditions => ["user_id = ? and contest_id =?", current_user.id, 
-                          params[:contest_id]]).sort_by &:stack_order
+                          :conditions => ["contest_id =? and user_id = ?", 
+                          params[:contest_id], current_user.id])
       end
     respond_to do |format|
       format.html # index.html.erb

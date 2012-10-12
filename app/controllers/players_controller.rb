@@ -1,4 +1,9 @@
 class PlayersController < ApplicationController
+
+  before_filter :authenticate
+  before_filter :authenticate_admin
+
+
   include PlayersHelper
   helper_method :sort_column, :sort_direction
   

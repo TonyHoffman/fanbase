@@ -21,6 +21,12 @@ module BranchesHelper
      end
   end
   
+  def get_contest_user_branches
+    @user_branches = Branch.find(:all, 
+                     :conditions => ["user_id = ? and contest_id =?", current_user.id, 
+                     params[:contest_id]], :order => :stack_order)
+  end
+
   def get_live_master_branch
     master_branches = Branch.find(:all, 
                         :conditions => ["master = ? and contest_id =?", true, 

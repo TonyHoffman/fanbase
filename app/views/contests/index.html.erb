@@ -1,12 +1,10 @@
 <h1>Listing contests</h1>
 
-<table class="pretty">
+<table>
   <tr>
     <th>Name</th>
-    <th>First game</th>
-    <th>Last game</th>
-    <th>Start</th>
-    <th>End</th>
+    <th>Game</th>
+    <th>Entry Deadline</th>
     <th></th>
 	<% if signed_in? && admin? %>
 	<th>Branches</th>
@@ -20,10 +18,10 @@
   <tr>
     <td><%= contest.name %></td>
     <td><%= contest.first_game %></td>
-    <td><%= contest.last_game %></td>
-    <td><%= contest.start.to_s(:custom_date_time) %></td>
-    <td><%= contest.end.to_s(:custom_date_time) %></td>
-	<td><%= link_to 'Join', new_contest_branch_path(contest) %></td>
+    <td><%= contest.end.strftime("%B %d, %Y") %></td>
+	<td><%= if contest.end > DateTime.now then
+			link_to 'Join', contest_branches_path(contest) else
+			'Closed' end %> </td>
 	<% if signed_in? && admin? %>
    	<td><%= link_to 'Branches', contest_branches_path(contest) %></td>
     <td><%= link_to 'Team', sport_team_path(contest.team.sport, contest.team) %></td>

@@ -1,4 +1,9 @@
 class TypesController < ApplicationController
+
+  before_filter :authenticate
+  before_filter :authenticate_admin
+
+
   # GET /types
   # GET /types.json
   def index

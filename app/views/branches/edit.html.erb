@@ -1,6 +1,12 @@
-<h1>Editing branch</h1>
-
+<%if admin?%>
 <%= render 'form' %>
-
+<%else%>
+<%= render 'join'%>
+<%end%>
 <%= link_to 'Show', contest_branch_path %> |
 <%= link_to 'Back', contest_branches_path %>
+
+
+
+
+
