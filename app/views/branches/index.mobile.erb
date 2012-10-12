@@ -22,7 +22,7 @@
 <br />
 
 <div class="mypadding" "data-inline" = "true">
-<% if @branches.count < 4 then %>
+<% if @branches.count < master_branch_count_this_contest(@contest_id) %>
 <%= link_to 'Add a pick', new_contest_branch_path, :controller => 'branches',
 			:action => :new, "data-role" => "button", "class" => "ui-btn-center", 
 			"data-mini" => "true", "data-inline" => "true"%>
