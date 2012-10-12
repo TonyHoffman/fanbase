@@ -9,7 +9,7 @@ module ApplicationHelper
     end
   end
   
-  def logo
+  def sponsor_logo
     image_tag("tb_rect_logo.png", :size => "207x40", :alt => "Trending Buffalo")
   end
   
@@ -28,7 +28,7 @@ module ApplicationHelper
   
   
   def data_theme
-    app_data_theme = " data-theme='b'"
+    app_data_theme = " data-theme='e'"
   end
   
   def sortable (column, title = null)

@@ -1,4 +1,6 @@
-<h3>You are entered to win <%=show_branch_prize(@branch.contest_id, current_user.id)%>*</h3>
+<h3>You are entered to win <%=get_this_master_branch(@branch.contest_id, @branch.stack_order).prize.to_s()%>*
+	from <%=link_to get_this_master_branch(@branch.contest_id, @branch.stack_order).sponsor.to_s(), 
+	get_this_master_branch(@branch.contest_id, @branch.stack_order).url_address.to_s()%>!</h3>
 
 <p>
 <% if @branch.player_id? %>
@@ -31,8 +33,8 @@
 	<%= link_to 'Add', contest_branches_path, :method => :get %> another pick for a chance to win 
 	<%=show_next_branch_prize(@branch.contest_id, current_user.id)%> or go 
 	<%else %>
-	<%= link_to 'Look', contest_branches_path, :method => :get %> at all my picks or go 
+	<%= link_to 'See', contest_branches_path, :method => :get %> my picks or go 
 	<%end%>
 	<%= link_to 'back', edit_contest_branch_path(@contest, @branch) %> 
-	 to change your last selection.
+	 to change my last selection.
 </h4>
