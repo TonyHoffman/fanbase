@@ -4,9 +4,10 @@ class ContestsController < ApplicationController
   def index
     if !params[:team_id].nil?
       @team = Team.find(params[:team_id])
-      @contests = @team.contests     
+      # @team.sort_by{|t| t[:end]}
+      @contests = @team.contests.sort_by{|c| c[:end]}.reverse
     else
-    @contests = Contest.all
+    @contests = Contest.all.sort_by{|c| c[:end]}.reverse
     end
 
     respond_to do |format|

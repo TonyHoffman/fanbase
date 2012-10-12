@@ -4,7 +4,9 @@
 		<li class="mypadding">
 		In <%= contest.team.sport.description%> <br>
 		<%= contest.team.city %> vs <%= contest.name %> <br>
-		<%= link_to contest.end.strftime("%B %d, %Y"), new_contest_branch_path(contest)%>
+		<%= if contest.end > DateTime.now then
+			link_to contest.end.strftime("%B %d, %Y"), new_contest_branch_path(contest) else
+			'Closed' end %>
 		</li>
 		<% end %>
 	</ul>

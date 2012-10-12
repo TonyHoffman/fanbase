@@ -21,20 +21,21 @@
 </small>
 </p>
 <div>
-<% if !@branch.id.nil? && @branch.id == this_user_contest_branches(current_user.id, @contest.id).last.id%>
-<%= button_to 'Delete this pick', contest_branch_path(@contest, @branch), 	
-	:confirm => 'Are you sure?', method: :delete  %>
-<%end%>
-</div>
-
-
-<h4>
-<% if @branches.count < master_branch_count_this_contest(@branch.contest_id) %>
-	<%= link_to 'Add', contest_branches_path, :method => :get %> another pick for a chance to win 
-	<%=show_next_branch_prize(@branch.contest_id, current_user.id)%> or go 
-	<%else %>
-	<%= link_to 'See', contest_branches_path, :method => :get %> my picks or go 
+<% if @contest.end > DateTime.now then%>	
+	<% if !@branch.id.nil? && @branch.id == this_user_contest_branches(current_user.id, @contest.id).last.id%>
+	<%= button_to 'Delete this pick', contest_branch_path(@contest, @branch), 	
+		:confirm => 'Are you sure?', method: :delete  %>
 	<%end%>
-	<%= link_to 'back', edit_contest_branch_path(@contest, @branch) %> 
-	 to change my last selection.
-</h4>
+	</div>
+
+	<h4>
+	<% if @branches.count < master_branch_count_this_contest(@branch.contest_id) %>
+		<%= link_to 'Add', contest_branches_path, :method => :get %> another pick for a chance to win 
+		<%=show_next_branch_prize(@branch.contest_id, current_user.id)%> or go 
+		<%else %>
+		<%= link_to 'See', contest_branches_path, :method => :get %> my picks or go 
+		<%end%>
+		<%= link_to 'back', edit_contest_branch_path(@contest, @branch) %> 
+		 to change my last selection.
+	</h4>
+<%end%>

@@ -10,7 +10,9 @@
 	<% if branch.player_id? %>
 		<%= link_to (branch.player.player_name + " (" + show_odds_this_branch(branch.contest_id, branch.stack_order, branch.player_id, 
 					branch.event_id, branch.prev_01, branch.prev_02, branch.prev_03) + ")"), 
-					edit_contest_branch_path(@contest, branch) %>
+					if branch.contest.end > DateTime.now then
+						edit_contest_branch_path(@contest, branch) else
+						contest_branch_path(@contest, branch) end %>
 	<%end%> 
 	<% if branch.event_id? %>
 	<%= link_to (branch.event.description + " (" + show_odds_this_branch(branch.contest_id, branch.stack_order, branch.player_id, 
@@ -23,7 +25,8 @@
 
 
 <div class="mypadding" "data-inline" = "true">
-<% if @branches.count < master_branch_count_this_contest(@contest.id) %>
+<% if @branches.count < master_branch_count_this_contest(@contest.id) && 
+	 	@contest.end > DateTime.now then %>
 <%= link_to 'Add a pick', new_contest_branch_path, :controller => 'branches',
 			:action => :new, "data-role" => "button", "class" => "ui-btn-center", 
 			"data-mini" => "true", "data-inline" => "true"%>
