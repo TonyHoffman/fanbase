@@ -1,8 +1,4 @@
 
-
-[data-role=page]{height: 100% !important; position:relative !important;}
-[data-role=footer]{bottom:0; position:absolute !important; top: auto !important; width:100%;}
-
 .mypadding {
 	padding-top: 2px; 
 	padding-right: 1em; 
@@ -10,16 +6,28 @@
 	padding-left: 1em; 
 	}
 		
-.myfooter {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+* {
+	margin: 0;
+	}
+	
+html,body {
+	height: 100%;
+	}
+	
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
 	}
 
-.footer_wrapper {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
+.footer, .push {
+	height: 4em;
 	}
+
+#center_logo {
+	text-align: center;
+	margin: 0 auto;
+	}
+	
+	
