@@ -12,7 +12,7 @@
 		<%= f.password_field :password%>
 </div>
 <div>
-	<%= f.submit 'Sign in' %> <br />
+	<%= f.submit 'Sign in', "data-ajax" => "false"%> <br />
 </div>
 <%end%>
 <p>New User? <%= link_to "Sign up now!", signup_path%></p> 
