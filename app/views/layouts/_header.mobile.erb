@@ -1,9 +1,10 @@
 <div data-role="header" <%= data_theme %> >
-	<h1><%= link_to '#SabreSim2012', root_path%></h1>
 	<% if signed_in? %>
+	<h1><%= link_to 'Game-Sim', contests_path%></h1>
 	<%= link_to "Sign Out", signout_path, "class" => "ui-btn-left", "data-mini" => "true", 
 		:confirm => "You sure?" %>
 	<% else %>
+	<h1><%= link_to 'Game-Sim', root_path%></h1>
 	<%= button_to "Sign in", signin_path, "class" => "ui-btn-left", "data-mini" => "true"%>
 	<%end%>	
 </div>

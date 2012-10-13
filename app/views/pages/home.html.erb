@@ -1,7 +1,6 @@
 <% if signed_in? %>
-<h3>You are logged into Trending Buffalo's fantasy site!</h3>
-	
-<%= link_to "See available games", contests_path %>
+
+redirect_to contests_path
 
 <%else%>
 
