@@ -1,4 +1,7 @@
 class ContestsController < ApplicationController
+  
+  before_filter :authenticate
+  
   # GET /contests
   # GET /contests.json
   def index
