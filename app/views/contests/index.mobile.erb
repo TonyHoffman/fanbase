@@ -5,7 +5,7 @@
 		In <%= contest.team.sport.description%> <br>
 		<%= contest.team.city %> vs <%= contest.name %> <br>
 		<%= if contest.end > DateTime.now then
-			link_to contest.end.strftime("%B %d, %Y"), new_contest_branch_path(contest) else
+			link_to contest.end.strftime("%B %d, %Y"), contest_branches_path(contest) else
 			'Closed' end %>
 		</li>
 		<% end %>

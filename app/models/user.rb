@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   
   has_many :branches, :dependent => :destroy
     
+  before_validation :downcase_email
+  
   validates :name,  :presence => true,
                     :length => {:maximum => 50}
   
@@ -18,14 +20,15 @@ class User < ActiveRecord::Base
                         :confirmation => true,
                         :length => {:within => 6..40}
   
-  before_save :encrypt_password
+  before_save :encrypt_password,
+              :downcase_email
 
   def has_password? (submitted_password)
     encrypted_password == encrypt(submitted_password) 
   end
 
   def self.authenticate(email, submitted_password)
-    user = find_by_email(email)
+    user = find_by_email(email.downcase)
     (user && user.has_password?(submitted_password)) ? user : nil # this line replaces the two next below
     #return nil if user.nil?
     # return user if user.has_password?(submitted_password)
@@ -55,6 +58,10 @@ class User < ActiveRecord::Base
       Digest::SHA2.hexdigest(string)
     end
 
-
+# this was added (along with the before validation on email) to resolve the problem
+# of case-sensitive e-mails
+    def downcase_email
+      self.email = self.email.downcase if self.email.present?
+    end
   
 end

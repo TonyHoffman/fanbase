@@ -1,5 +1,6 @@
-<h3>My Picks for: <br/> 
-<%= @contest.team.city%> against <%= @contest.name%></h3>
+<h3>In <%= @contest.team.sport.description%><br/>
+My Picks for: <br/>
+<%= @contest.team.city%> against <%= @contest.name%> <br/></h3>
 
 <ul data-role="listview" <%=data_theme%>>
 	<% @branches.each do |branch| %>
