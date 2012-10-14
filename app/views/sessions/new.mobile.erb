@@ -1,18 +1,19 @@
 <div data-role="content" <%=data_theme%>>
 <h1>Sign in Mobile</h1>
+<small>Email and password case sensitive</small>
 
 <%= form_for(:session, :url => sessions_path) do |f| %>
 
 <div>
-		<%= f.label :email %> <br />
+		<%= f.label :email %> 
 		<%= f.text_field :email%>
 </div>
 <div>
-		<%= f.label :password %> <br />
+		<%= f.label :password %>
 		<%= f.password_field :password%>
 </div>
 <div>
-	<%= f.submit 'Sign in', "data-ajax" => "false"%> <br />
+	<%= f.submit 'Sign in'%> <br />
 </div>
 <%end%>
 <p>New User? <%= link_to "Sign up now!", signup_path%></p> 
