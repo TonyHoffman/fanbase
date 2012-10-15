@@ -1,6 +1,5 @@
 <div data-role="content" <%=data_theme%>>
 <h1>Sign in Mobile</h1>
-<small>Email and password case sensitive</small>
 
 <%= form_for(:session, :url => sessions_path) do |f| %>
 
@@ -11,6 +10,7 @@
 <div>
 		<%= f.label :password %>
 		<%= f.password_field :password%>
+		<small>Note: password is case sensitive.</small>
 </div>
 <div>
 	<%= f.submit 'Sign in'%> <br />

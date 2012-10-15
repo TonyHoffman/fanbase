@@ -31,5 +31,7 @@ class Player < ActiveRecord::Base
     def show_branch_stats
       player_name + ' (' + branches_count.to_s() + ')'
     end
+    
+
                   
   end
