@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
     @team = Team.find(params[:team_id])
     if !@contest.nil? then
       # @players = @team.players.order(:branches_count).reverse
-      @players = @team.players.sort_by{|p| -p.branches.count }.reverse
+      @players = @team.players.sort_by{|p| p.branches.count }
     else
       @players = @team.players.order(sort_column + " " + sort_direction)
     end
