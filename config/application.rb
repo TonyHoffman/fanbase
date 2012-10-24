@@ -58,6 +58,10 @@ module Fanbase
     
     config.time_zone = 'Eastern Time (US & Canada)' 
     
+    if Rails.env == "production"
+      config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-35828270-1")
+    end
+    
     
     
   end

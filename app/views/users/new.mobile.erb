@@ -6,19 +6,19 @@
 <%= render 'shared/error_messages', :object => f.object%> 
 
 <div>
-  <%= f.label :name %><br />
+  <%= f.label :name %>
   <%= f.text_field :name %>
 </div>
 <div>
-  <%= f.label :email %><br />
-  <%= f.text_field :email %>
+  <%= f.label :email %><small>(We need this to contact you if you win.)</small>
+  <%= f.text_field :email %> 
 </div>
 <div>
-  <%= f.label :password %><br />
+  <%= f.label :password %>
   <%= f.password_field :password %>
 </div>
 <div>
-  <%= f.label :password_confirmation, "Password Confirmation" %><br />
+  <%= f.label :password_confirmation, "Password Confirmation" %>
   <%= f.password_field :password_confirmation %>
 </div>
 
