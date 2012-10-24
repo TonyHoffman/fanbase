@@ -1,0 +1,18 @@
+<h1>Listing picks for <%=@contest.name%> </h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @players.each do |player| %>
+  <tr>
+    <td><%= player.player_name %></td>
+    <td><%= branch_count_this_contest(player.id, @contest.id)%></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Back', contest_branches_path(@contest)%>
+

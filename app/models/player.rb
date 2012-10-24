@@ -1,10 +1,11 @@
 class Player < ActiveRecord::Base
   
-  attr_accessible :last_name, :first_name, :first_game, :last_game, :position, :team_id, :id
+  attr_accessible :last_name, :first_name, :first_game, :last_game, :position, 
+                  :team_id, :id, :branches_count
   
   # validates :last_name, first_name, :presence => true
   
-  belongs_to :team
+  belongs_to :team, :class_name => 'Team', :foreign_key => "team_id"
   has_many :branches
   
   # has_and_belongs_to_many :branches

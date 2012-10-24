@@ -1,0 +1,15 @@
+<h3>Listing picks for <%=@contest.name%> </h3>
+	<ul data-role="listview" <%=data_theme%>>
+
+	<% @players.each do |player| %>
+	<li>
+    <%= player.player_name %> 
+	<span class="ui-li-count"><%= branch_count_this_contest(player.id, @contest.id)%> </span>
+	</li>
+	<% end %>
+</ul>
+
+<div class="mypadding">
+	</br>
+<%= link_to 'Back', contest_branches_path(@contest)%>
+</div>

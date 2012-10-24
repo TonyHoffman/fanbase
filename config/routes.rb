@@ -18,6 +18,10 @@ Fanbase::Application.routes.draw do
     resources :events
   end
   
+  # resources :players do
+  #   get 'picks', :on => :collection
+  # end  
+
   resources :teams do
     resources :players
   end
@@ -30,18 +34,17 @@ Fanbase::Application.routes.draw do
     resources :branches
   end
   
-  resources :players do
-    resources :branches
-  end
+
+  
+  # resources :players do
+  #   resources :branches
+  # end
   
   resources :users do
     resources :branches
   end
   
 
-  
-
-  
   
   root :to => 'pages#home'
   
@@ -55,7 +58,7 @@ Fanbase::Application.routes.draw do
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   
-
+  match 'contest/:team_id/team/:team_id/players', :to => 'team#players#index'
 
   
 

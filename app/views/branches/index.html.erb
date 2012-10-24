@@ -1,5 +1,6 @@
 <%if !current_user.admin? then%> 
-<h3>In <%= @contest.team.sport.description%><br/>
+
+<h3>In <%= @contest.team.sport.description%> <br/>
 My Picks for: <br/>
 <%= @contest.team.city%> against <%= @contest.name%> <br/></h3>
 	<table>
@@ -14,8 +15,9 @@ My Picks for: <br/>
 			<td><% if branch.type_id? %><%= branch.type.event %><%end%></td>
 		    <td>
 			<% if branch.player_id? %>
-			<%= link_to (branch.player.player_name + " (" + show_odds_this_branch(branch.contest_id, branch.stack_order, branch.player_id, 
-						branch.event_id, branch.prev_01, branch.prev_02, branch.prev_03) + ")"), 
+			<%= link_to (branch.player.player_name + " (" + show_odds_this_branch(branch.contest_id, 
+						branch.stack_order, branch.player_id, branch.event_id, branch.prev_01, 
+						branch.prev_02, branch.prev_03) + ")"), 
 						if branch.contest.end > DateTime.now then
 							edit_contest_branch_path(@contest, branch) else
 							contest_branch_path(@contest, branch) end %>
@@ -37,10 +39,12 @@ My Picks for: <br/>
 	<%end%>
 	</div>
 
+	<%= link_to 'See other picks', team_players_path(@contest.team, :contest_id => @contest.id)%>
+	
 <%else%>
 
 	<h1>Listing branches for <%= @contest.name%></h1>
-		<table>
+		<table class="pretty">
 		  <tr>
 			<th><%=User%></th>
 		    <th>Type</th>
@@ -50,7 +54,7 @@ My Picks for: <br/>
 		    <th>Player</th>
 		    <th>Event</th>
 		    <th>Prize</th>
-		    <th></th>
+			<th></th>
 		    <th></th>
 		    <th></th>
 		  </tr>
@@ -73,7 +77,8 @@ My Picks for: <br/>
 				<%= branch.event.description %> 
 				<%end%>	
 			</td>
-			<td><%=branch.prize%>
+			<td><%=branch.prize%></td>
+			<td><%= branch_count_this_contest(branch.player_id, @contest.id)%></td>
 		    <td><%= link_to 'Edit', edit_contest_branch_path(@contest, branch) %></td>
 		    <td><%= link_to 'Destroy', contest_branch_path(@contest, branch), 
 										confirm: 'Are you sure?', method: :delete %></td>

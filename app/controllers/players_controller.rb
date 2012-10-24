@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
 
-  before_filter :authenticate
-  before_filter :authenticate_admin
+  before_filter :authenticate, :except => [:index, :show]
+  before_filter :authenticate_admin, :except => [:index, :show]
 
 
   include PlayersHelper
@@ -10,11 +10,17 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
+    contest_if
     @team = Team.find(params[:team_id])
-    @players = @team.players.order(sort_column + " " + sort_direction)
+    if !@contest.nil? then
+      # @players = @team.players.order(:branches_count).reverse
+      @players = @team.players.sort_by{|p| -p.branches.count }.reverse
+    else
+      @players = @team.players.order(sort_column + " " + sort_direction)
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html #index.html.erb
       format.json { render json: @players }
     end
   end
@@ -96,7 +102,7 @@ class PlayersController < ApplicationController
     end
   end
   
-  
+
   private
   
   def sort_column

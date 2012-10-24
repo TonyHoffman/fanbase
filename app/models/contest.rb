@@ -1,6 +1,6 @@
 class Contest < ActiveRecord::Base
   
-  attr_accessible :name, :first_game, :last_game, :start, :end, :id
+  attr_accessible :name, :first_game, :last_game, :start, :end, :id, :team_id
   # attr_accessible :team_id, :category_id
   belongs_to :team, :foreign_key => "team_id"
   

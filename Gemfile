@@ -17,6 +17,8 @@ gem 'jquery-rails', '>=1.0.12'
 gem 'mobylette'
 gem 'jquery_mobile_rails'
 
+gem 'counter_culture', '~> 0.1.7'
+
 group :development do
   gem 'rspec-rails', '2.9.0'
   gem 'annotate', '2.4.0'

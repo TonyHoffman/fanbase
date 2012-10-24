@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+    include PagesHelper
+  
   def splash
     @title = 'Splash'
   end
@@ -19,4 +21,9 @@ class PagesController < ApplicationController
     @title = 'Admin'
     @sports = Sport.all
   end
+  
+
+  
+  
+  
 end

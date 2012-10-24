@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
 
-  before_filter :authenticate
-  before_filter :authenticate_admin
+  before_filter :authenticate, :except => [:index, :show]
+  before_filter :authenticate_admin, :except => [:index, :show]
 
 
   # GET /teams
