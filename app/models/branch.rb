@@ -6,7 +6,7 @@ class Branch < ActiveRecord::Base
   # belongs_to :players, :foreign_key => "player_id" 
   # has_and_belongs_to_many :players
   
-  before_save :update_counters
+  # before_save :update_counters
   
   belongs_to :contest, :class_name => 'Contest', :foreign_key => "contest_id"
   belongs_to :user, :class_name => 'User', :foreign_key =>"user_id"
@@ -27,12 +27,12 @@ class Branch < ActiveRecord::Base
   end
   
   private
-  def update_counters
-    new_player = Player.find self.player_id
-    old_player = Player.find self.player_id_was
-    new_player.increment(:branches_count)
-    old_player.decrement(:branches_count)
-  end
+  # def update_counters
+  #   new_player = Player.find self.player_id
+  #   old_player = Player.find self.player_id_was
+  #   new_player.increment(:branches_count)
+  #   old_player.decrement(:branches_count)
+  # end
 
   
 end
