@@ -4,7 +4,7 @@ class AddBranchesCountToPlayers < ActiveRecord::Migration
     
     Player.reset_column_information
     Player.select(:id).find_each do |p|
-      Player.reset_counters p.id. :branches
+      Player.reset_counters p.id :branches
     end
 
   end
