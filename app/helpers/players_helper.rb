@@ -11,11 +11,7 @@ module PlayersHelper
     branches.count
   end
   
-  
-  
   def players_this_contest
-  # @contest = Contest.find(params[:contest_id])
-  
   @players = Player.find(:all, 
                    :conditions => ["team_id = ?", :team_id], 
                    :order => :last_name)
