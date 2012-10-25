@@ -8,10 +8,11 @@
 	</head>
 		<% if signed_in? && admin? %>
 		<body class="admin">
+		<div class="bigcontainer">
 		<%else%>
 		<body>
-		<%end%>
 		<div class="container">
+		<%end%>
       	<%= render 'layouts/header' %>
 			<section class="round">
 			<% flash.each do |key, value | %>
