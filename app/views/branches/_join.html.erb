@@ -18,7 +18,7 @@
 <%= f.hidden_field :prev_01, :value => @branch.prev_01 %>
 <%= f.hidden_field :prev_02, :value => @branch.prev_02 %>
 <%= f.hidden_field :prev_03, :value => @branch.prev_03 %>
-<%= f.hidden_field :user_id, :value => current_user.id %>
+<% if @branch.user_id.nil? %> <%= f.hidden_field :user_id, :value => current_user.id%> <%end%>
 
 
 	<% if @branch.is_player? %>

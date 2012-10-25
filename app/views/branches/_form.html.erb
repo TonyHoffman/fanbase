@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-<%= f.hidden_field :user_id, :value => current_user.id %>
+<% if @branch.user_id.nil? %> <%= f.hidden_field :user_id, :value => current_user.id%> <%end%>
 
   <div class="field">
     <%= f.label @contest.team.sport.description %><br />
