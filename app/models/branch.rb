@@ -19,7 +19,8 @@ class Branch < ActiveRecord::Base
   
   attr_accessible :master, :stack_order, :is_player, :is_type, :type_id, :player_id, 
                   :event_id, :user_id, :contest_id, :id, :branch_id, :prev_01, 
-                  :prev_02, :prev_03, :prev_04, :prize, :url_address, :sponsor
+                  :prev_02, :prev_03, :prev_04, :prize, :url_address, :sponsor,
+                  :updated_at
                   
   def id_to_compare
     if is_player == true && !player_id.nil? then player_id end

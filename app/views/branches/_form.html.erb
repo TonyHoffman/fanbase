@@ -70,8 +70,9 @@
 	<% end %><br /> -->
 	 <%= f.number_field :event_id %>
   </div>
-
-
+  <div class="field">
+	Submitted on: <%= @branch.updated_at.to_formatted_s(:long_ordinal)%>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
