@@ -40,17 +40,16 @@ My Picks for: <br/>
 <%else%>
 
 	<h1>Listing branches for <%= @contest.name%></h1>
-		<table>
+		<table class="pretty">
 		  <tr>
 			<th><%=User%></th>
-		    <th>Type</th>
+		    <th><%= sortable "type_id", "Type " %></th>
 		    <th>Order</th>
 		    <th>Is player</th>
-		    <th>Is type</th>
-		    <th>Player</th>
-		    <th>Event</th>
+		    <th>Is Type</th>
+		    <th><%= sortable "player_id", "Player " %></th>
+		    <th><%= sortable "event_id", "Event " %></th>
 		    <th>Prize</th>
-		    <th></th>
 		    <th></th>
 		    <th></th>
 		  </tr>
@@ -66,7 +65,7 @@ My Picks for: <br/>
 			<td><%= branch.is_player %></td>
 		    <td><%= branch.is_type %></td>
 		 	<td>	<% if branch.player_id? %>
-					<%= branch.player.last_name %>
+					<%= branch.last_first_name = branch.player.last_first_name %>
 					<%end%>
 			</td>
 		    <td><% if branch.event_id? %>

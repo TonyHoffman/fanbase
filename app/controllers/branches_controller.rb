@@ -1,13 +1,15 @@
 class BranchesController < ApplicationController
   include BranchesHelper
   
-  # before_filter :adjust_format_for_mobile
-
+  helper_method :sort_column, :sort_direction
   
   def index
     get_parent_contest
     if current_user.admin?
-      @branches = @contest.branches.order(:user_id, :stack_order)  
+      @branches = @contest.branches.order(sort_column + " " + sort_direction)  
+        # @branches.each do |branch|
+        #   branch[:last_first_name] = branch.player.last_first_name
+        # end
       else 
       @branches = Branch.find(:all, 
                           :conditions => ["contest_id =? and user_id = ?", 
@@ -107,25 +109,13 @@ class BranchesController < ApplicationController
   end
 
 
-
-# 
-# private
-#   # Set iPhone format if request 
-#   def adjust_format_for_mobile
-#     if mobile_request?
-#         if request.format == :js
-#             request.format = :mobilejs
-#         else
-#             request.format = :mobile
-#         end
-#     end
-#   end
-# 
-# # Return true for mobile requests 
-#   def mobile_request?
-#     return request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
-#     #return true
-#     #I set this to return true always when I'm debugging on the desktop
-#   end  
+  private
+  def sort_column
+    params[:sort] || "player_id"
+  end
+  
+  def sort_direction
+    params[:direction] || "asc"
+  end
 
 end

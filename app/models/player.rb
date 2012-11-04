@@ -2,6 +2,8 @@ class Player < ActiveRecord::Base
   
   attr_accessible :last_name, :first_name, :first_game, :last_game, :position, :team_id, :id
   
+  # attr_accessor :last_first_name
+  
   # validates :last_name, first_name, :presence => true
   
   belongs_to :team
@@ -23,6 +25,11 @@ class Player < ActiveRecord::Base
     def player_name
         first_name + ' ' + last_name
       end
+      
+    def last_first_name
+        last_name + ', ' + first_name
+      end
+      
             
     def branches_count
       branches.count
