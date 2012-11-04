@@ -70,9 +70,11 @@
 	<% end %><br /> -->
 	 <%= f.number_field :event_id %>
   </div>
-  <div class="field">
-	<%=if !@branch.updated_at.nil? then 'Submitted on: ' + @branch.updated_at.to_formatted_s(:long_ordinal) end %>
-  </div>
+	<%if !@branch.updated_at.nil?%>
+  	<div class="field">
+	Submitted on: <%= @branch.updated_at.to_formatted_s(:long_ordinal) %>
+  	</div>
+	<%end%>
 
   <div class="actions">
     <%= f.submit %>
