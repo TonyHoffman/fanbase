@@ -21,7 +21,6 @@ class Branch < ActiveRecord::Base
                   :event_id, :user_id, :contest_id, :id, :branch_id, :prev_01, 
                   :prev_02, :prev_03, :prev_04, :prize, :url_address, :sponsor,
                   :updated_at
-                  :prev_02, :prev_03, :prev_04, :prize, :url_address, :sponsor
                                     
   attr_accessor :last_first_name
   
